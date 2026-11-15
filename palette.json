@@ -1,0 +1,8 @@
+{
+  "_note": "Andronix palette: background, the dark and light brightness ramps, the four accents, and the halftone dot sizes and levels.",
+  "background": "#19120E",
+  "ramp": {"dark": ["#2A1F18", "#3A2D24", "#4E3423", "#6E3408", "#954611", "#C25F14", "#E8791E", "#F59A4E", "#FFB689", "#FFD9BF", "#FFF3EA"], "light": ["#EADDD3", "#E3CDBD", "#DDB79C", "#DCA174", "#E0874A", "#E8791E", "#CF6A16", "#B85A12", "#96490F", "#7E3D0B", "#6E3408"]},
+  "special": {"orange": "#E8791E", "cream": "#FFF3EA", "muted": "#8C7A6E", "olive": "#BFD39A"},
+  "dotSizes": [0, 0.15, 0.27, 0.38, 0.47],
+  "levels": [0.13, 0.3, 0.52, 0.76]
+}

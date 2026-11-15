@@ -1,0 +1,55 @@
+/* Andronix dawn glow: halftone dots (art.py) used as a mask over a palette gradient.
+   It sits behind the chat column only, and fades back once a conversation has messages.
+   [data-chat-canvas] is not on T3's stable-selector list; if it goes away the glow simply does not show.
+   build.py fills the __NAMES__ from palette.json. */
+
+:root {
+  --ax-art: url("__ART__");
+  --ax-bg: __LIGHT_BG__;
+  --ax-glow: radial-gradient(ellipse 56% 62% at 72% 106%, __LIGHT_GLOW__);
+  --ax-rest: __LIGHT_REST__;
+  --ax-busy: __LIGHT_BUSY__;
+}
+
+.dark {
+  --ax-bg: __DARK_BG__;
+  --ax-glow: radial-gradient(ellipse 56% 62% at 72% 106%, __DARK_GLOW__);
+  --ax-rest: __DARK_REST__;
+  --ax-busy: __DARK_BUSY__;
+}
+
+[data-chat-canvas] {
+  isolation: isolate;
+  background-color: var(--ax-bg) !important;
+}
+
+[data-chat-canvas]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: var(--ax-glow);
+  -webkit-mask: var(--ax-art) center / 100% 100% no-repeat;
+  mask: var(--ax-art) center / 100% 100% no-repeat;
+  opacity: var(--ax-rest);
+}
+
+[data-chat-canvas]:has(.messages-timeline-scroll)::before {
+  opacity: var(--ax-busy);
+}
+
+/* the layers between the glow and the text carry their own canvas fill */
+[data-chat-canvas] [data-workspace-area="conversation"],
+[data-chat-canvas] [data-timeline-loading],
+[data-chat-canvas] .messages-timeline-scroll,
+[data-chat-canvas] [data-chat-composer-form] {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  [data-chat-canvas]::before {
+    display: none;
+  }
+}
