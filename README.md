@@ -82,7 +82,7 @@ If a future T3 update renames the chat column's hook, the glow stops showing and
 
 The approach (a colour table and a CSS background packed into one theme file by a small build
 script) follows [t3-nyx-theme](https://github.com/Deepusleepy/t3-nyx-theme) by Deepusleepy, MIT.
-`minify` in `build.py` is adapted from it.
+`minify` in `build.py` is adapted from it; see [NOTICE](NOTICE).
 
 ## License
 
